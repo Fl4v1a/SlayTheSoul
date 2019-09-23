@@ -87,8 +87,8 @@ public class DefaultMod implements
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Dark Souls";
-    private static final String AUTHOR = "Gremious"; // And pretty soon - You!
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String AUTHOR = "GniLudio, FlaviadeLuce"; // And pretty soon - You!
+    private static final String DESCRIPTION = "A Mod for Souls fans.";
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -406,6 +406,7 @@ public class DefaultMod implements
         BaseMod.addCard(new OrbSkill());
         BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         BaseMod.addCard(new DefaultCommonAttack());
+        BaseMod.addCard(new DarkSoulsCommonAttack());
         BaseMod.addCard(new DefaultAttackWithVariable());
         BaseMod.addCard(new DefaultCommonSkill());
         BaseMod.addCard(new DefaultCommonPower());
@@ -423,6 +424,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(OrbSkill.ID);
         UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
+        UnlockTracker.unlockCard(DarkSoulsCommonAttack.ID);
         UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
         UnlockTracker.unlockCard(DefaultCommonSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonPower.ID);
@@ -511,7 +513,5 @@ public class DefaultMod implements
     
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.
-    public static String makeID(String idText) {
-        return getModID() + ":" + idText;
-    }
+    public static String makeID(String idText) {return getModID() + ":" + idText;}
 }
