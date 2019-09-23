@@ -5,12 +5,12 @@
   },
   "darkSouls:DefaultCommonSkill": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block. NL thedefault:Multiword_Keyword."
+    "DESCRIPTION": "Gain !B! Block. NL darkSouls:Multiword_Keyword."
   },
   "darkSouls:DefaultCommonPower": {
     "NAME": "Hold Place",
-    "DESCRIPTION": "Gain !M! thedefault:Keyword.",
-    "UPGRADE_DESCRIPTION": "Gain !M! thedefault:Keywords."
+    "DESCRIPTION": "Gain !M! darkSouls:Keyword.",
+    "UPGRADE_DESCRIPTION": "Gain !M! darkSouls:Keywords."
   },
   "darkSouls:DefaultUncommonAttack": {
     "NAME": "Big slap",
@@ -22,8 +22,8 @@
   },
   "darkSouls:DefaultUncommonPower": {
     "NAME": "Weirdness",
-    "DESCRIPTION": "Gain X thedefault:Keywords.",
-    "UPGRADE_DESCRIPTION": "Gain X +1 thedefault:Keywords."
+    "DESCRIPTION": "Gain X darkSouls:Keywords.",
+    "UPGRADE_DESCRIPTION": "Gain X +1 darkSouls:Keywords."
   },
   "darkSouls:DefaultRareAttack": {
     "NAME": "TOUCH",
