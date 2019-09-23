@@ -1,4 +1,4 @@
-package darkSouls.cards;
+package darkSouls.cards.templates;
 
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import darkSouls.DefaultMod;
-import darkSouls.cards.DefaultRareAttack;
+import darkSouls.cards.templates.DefaultRareAttack;
 import darkSouls.util.TextureLoader;
 
 public class RarePower extends AbstractPower implements CloneablePowerInterface {

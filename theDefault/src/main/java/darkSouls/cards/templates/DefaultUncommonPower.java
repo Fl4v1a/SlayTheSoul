@@ -1,4 +1,4 @@
-package darkSouls.cards;
+package darkSouls.cards.templates;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

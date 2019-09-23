@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import darkSouls.cards.templates.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import darkSouls.cards.*;
@@ -415,6 +416,8 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRareAttack());
         BaseMod.addCard(new DefaultRareSkill());
         BaseMod.addCard(new DefaultRarePower());
+
+        BaseMod.addCard(new TestCard());
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -432,6 +435,8 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRareAttack.ID);
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
+
+        UnlockTracker.unlockCard(TestCard.ID);
         
         logger.info("Done adding cards!");
     }

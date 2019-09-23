@@ -49,5 +49,9 @@
   "darkSouls:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "darkSouls:TestCard": {
+    "NAME": "Test Karte",
+    "DESCRIPTION": "Applies !D! darksouls:Sugit."
   }
 }

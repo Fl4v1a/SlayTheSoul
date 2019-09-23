@@ -1,4 +1,4 @@
-package darkSouls.cards;
+package darkSouls.cards.templates;
 
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
