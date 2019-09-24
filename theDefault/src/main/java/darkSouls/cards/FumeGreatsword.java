@@ -89,17 +89,9 @@ public class FumeGreatsword extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SMASH)); // The animation the damage action uses to hit.
-        /* TODO: Auswahl der Gegner die um das Zielmonster stehen fehlt noch.
-                addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
-                addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
-        */
-        /* TODO: Auswahl der Gegner die um das Zielmonster stehen fehlt noch.
-                addToBot(new ApplyPowerAction(m, p,
-                        new VulnerablePower(m, magicNumber, false), magicNumber));
-        */
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SMASH)); // The animation the damage action uses to hit.
+        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
+
         int s = 0;
         for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (mo == m) {
