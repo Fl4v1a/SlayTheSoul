@@ -26,13 +26,12 @@
     "DESCRIPTION": "Milan sugit."
   },
   {
-    "PROPERT_NAME": "Bleed",
+    "PROPER_NAME": "Smash",
     "NAMES": [
-      "Bleed",
-      "bleed"
+      "Smash",
+      "smash"
     ],
-    "DESCRIPTION": "Attacks deal more damage. NL Loses 1Bleed when getting attacked."
+    "DESCRIPTION": "Deal half the Attack effects to adjacent Enemies."
   }
-
 
 ]

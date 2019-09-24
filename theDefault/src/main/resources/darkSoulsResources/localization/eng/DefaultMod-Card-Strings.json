@@ -3,6 +3,20 @@
     "NAME": "Dark Sword",
     "DESCRIPTION": "Deal !D! Damage."
   },
+  "darkSouls:ArtoriasGreatsword": {
+    "NAME": "Artorias Greatsword",
+    "DESCRIPTION": "Deal !D! Damage. NL Apply !M! Vulnerable."
+  },
+  "darkSouls:FumeGreatsword": {
+    "NAME": "Fume Greatsword",
+    "DESCRIPTION": "Deal !D! darksouls:Smash Damage. NL Apply !M! Vulnerable."
+  },
+
+
+
+
+
+
   "darkSouls:DefaultCommonAttack": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! Damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
@@ -57,9 +71,5 @@
   "darkSouls:TestCard": {
     "NAME": "Test Karte",
     "DESCRIPTION": "Applies !D! darksouls:Sugit."
-  },
-  "darkSouls:BanditsKnife": {
-    "NAME": "Lothrics Knight Sword",
-    "DESCRIPTION": "Deals !D! damage. NL Applies !M!darksouls:bleed."
   }
 }
