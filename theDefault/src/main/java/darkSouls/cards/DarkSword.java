@@ -97,10 +97,6 @@ public class DarkSword extends CustomCard {
                         // I.e. i want energy gain or card draw, lemme check out Adrenaline
                         // P.s. if you want to damage ALL enemies OUTSIDE of a card, check out the custom orb.
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); // The animation the damage action uses to hit.
-
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAllEnemiesAction(m, new int[] {damage}, damageType, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-        );
     }
 
     // Upgraded stats.
