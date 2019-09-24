@@ -3,6 +3,10 @@
     "NAME": "Dark Sword",
     "DESCRIPTION": "Deal !D! Damage."
   },
+  "darkSouls:ArtoriasGreatsword": {
+    "NAME": "Artorias Greatsword",
+    "DESCRIPTION": "Deal !D! Damage. NL Apply !M! Vulnerable."
+  },
 
 
 
