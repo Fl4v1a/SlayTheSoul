@@ -407,7 +407,6 @@ public class DefaultMod implements
         BaseMod.addCard(new OrbSkill());
         BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         BaseMod.addCard(new DefaultCommonAttack());
-        BaseMod.addCard(new DarkSoulsCommonAttack());
         BaseMod.addCard(new DefaultAttackWithVariable());
         BaseMod.addCard(new DefaultCommonSkill());
         BaseMod.addCard(new DefaultCommonPower());
@@ -419,7 +418,7 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRarePower());
 
         BaseMod.addCard(new TestCard());
-        BaseMod.addCard(new LothricKnightSword());
+        BaseMod.addCard(new DarkSword());
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -428,7 +427,6 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(OrbSkill.ID);
         UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
-        UnlockTracker.unlockCard(DarkSoulsCommonAttack.ID);
         UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
         UnlockTracker.unlockCard(DefaultCommonSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonPower.ID);
@@ -440,7 +438,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRarePower.ID);
 
         UnlockTracker.unlockCard(TestCard.ID);
-        UnlockTracker.unlockCard(LothricKnightSword.ID);
+        UnlockTracker.unlockCard(DarkSword.ID);
         
         logger.info("Done adding cards!");
     }
