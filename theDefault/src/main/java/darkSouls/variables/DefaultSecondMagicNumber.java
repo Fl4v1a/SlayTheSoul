@@ -2,7 +2,7 @@ package darkSouls.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import darkSouls.cards.AbstractDefaultCard;
+import darkSouls.cards.templates.AbstractDefaultCard;
 
 import static darkSouls.DefaultMod.makeID;
 

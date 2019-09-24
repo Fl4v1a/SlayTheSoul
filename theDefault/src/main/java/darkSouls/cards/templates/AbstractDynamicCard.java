@@ -1,4 +1,4 @@
-package darkSouls.cards;
+package darkSouls.cards.templates;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 

@@ -1,9 +1,10 @@
-package darkSouls.cards;
+package darkSouls.cards.templates;
 
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -96,6 +97,10 @@ public class DefaultCommonAttack extends CustomCard {
                         // I.e. i want energy gain or card draw, lemme check out Adrenaline
                         // P.s. if you want to damage ALL enemies OUTSIDE of a card, check out the custom orb.
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); // The animation the damage action uses to hit.
+
+        AbstractDungeon.actionManager.addToBottom(
+                new DamageAllEnemiesAction(m, new int[] {damage}, damageType, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+        );
     }
 
     // Upgraded stats.
