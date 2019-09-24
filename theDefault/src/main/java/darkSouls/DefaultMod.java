@@ -88,8 +88,8 @@ public class DefaultMod implements
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Dark Souls";
-    private static final String AUTHOR = "Gremious"; // And pretty soon - You!
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String AUTHOR = "GniLudio, FlaviadeLuce"; // And pretty soon - You!
+    private static final String DESCRIPTION = "A Mod for Souls fans.";
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -418,7 +418,7 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRarePower());
 
         BaseMod.addCard(new TestCard());
-        BaseMod.addCard(new BanditsKnife());
+        BaseMod.addCard(new DarkSword());
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -438,7 +438,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRarePower.ID);
 
         UnlockTracker.unlockCard(TestCard.ID);
-        UnlockTracker.unlockCard(BanditsKnife.ID);
+        UnlockTracker.unlockCard(DarkSword.ID);
         
         logger.info("Done adding cards!");
     }
@@ -518,7 +518,5 @@ public class DefaultMod implements
     
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.
-    public static String makeID(String idText) {
-        return getModID() + ":" + idText;
-    }
+    public static String makeID(String idText) {return getModID() + ":" + idText;}
 }

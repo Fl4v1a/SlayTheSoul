@@ -1,4 +1,4 @@
-package darkSouls.cards.templates;
+package darkSouls.cards;
 
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
@@ -25,7 +25,7 @@ import static darkSouls.DefaultMod.makeCardPath;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class DefaultCommonAttack extends CustomCard {
+public class DarkSword extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -35,10 +35,10 @@ public class DefaultCommonAttack extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DefaultCommonAttack.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(DarkSword.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = makeCardPath("Attack.png");
+    public static final String IMG = makeCardPath("dark_sword-icon.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
     // and make sure it's in the correct folder. That's all.
     // There's makeCardPath, makeRelicPath, power, orb, event, etc..
@@ -70,7 +70,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // /STAT DECLARATION/
 
-    public DefaultCommonAttack() {
+    public DarkSword() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
