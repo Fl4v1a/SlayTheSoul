@@ -419,6 +419,7 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRarePower());
 
         BaseMod.addCard(new TestCard());
+        BaseMod.addCard(new LothricKnightSword());
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -439,6 +440,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRarePower.ID);
 
         UnlockTracker.unlockCard(TestCard.ID);
+        UnlockTracker.unlockCard(LothricKnightSword.ID);
         
         logger.info("Done adding cards!");
     }
