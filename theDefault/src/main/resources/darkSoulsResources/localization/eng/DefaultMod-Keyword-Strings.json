@@ -32,6 +32,14 @@
       "smash"
     ],
     "DESCRIPTION": "Deal half the Attack effects to adjacent Enemies."
+  },
+  {
+    "PROPER_NAME": "Bleed",
+    "NAMES": [
+      "Bleed",
+      "bleed"
+    ],
+    "DESCRIPTION": "Attacks deal X more damage when hurting hp."
   }
 
 ]

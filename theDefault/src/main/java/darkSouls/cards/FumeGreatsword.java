@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import darkSouls.DefaultMod;
 import darkSouls.characters.TheDefault;
+import darkSouls.powers.CommonPower;
 
 import static darkSouls.DefaultMod.makeCardPath;
 // "How come this card extends CustomCard and not DynamicCard like all the rest?"
