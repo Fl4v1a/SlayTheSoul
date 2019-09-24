@@ -93,7 +93,7 @@ public class TestCard extends CustomCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAllEnemiesAction(
                         p,
-                        new int[] {DAMAGE},
+                        new int[] {DAMAGE, DAMAGE*2, DAMAGE*3},
                         damageTypeForTurn,
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
                 )

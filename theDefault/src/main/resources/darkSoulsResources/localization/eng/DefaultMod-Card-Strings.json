@@ -53,5 +53,9 @@
   "darkSouls:TestCard": {
     "NAME": "Test Karte",
     "DESCRIPTION": "Applies !D! darksouls:Sugit."
+  },
+  "darkSouls:BanditsKnife": {
+    "NAME": "Lothrics Knight Sword",
+    "DESCRIPTION": "Deals !D! damage. NL Applies !M!darksouls:bleed."
   }
 }

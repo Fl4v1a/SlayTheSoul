@@ -24,6 +24,15 @@
       "sugit"
     ],
     "DESCRIPTION": "Milan sugit."
+  },
+  {
+    "PROPERT_NAME": "Bleed",
+    "NAMES": [
+      "Bleed",
+      "bleed"
+    ],
+    "DESCRIPTION": "Attacks deal more damage. NL Loses 1Bleed when getting attacked."
   }
+
 
 ]
