@@ -3,14 +3,17 @@ package darkSouls.cards;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import darkSouls.DefaultMod;
 import darkSouls.characters.TheDefault;
 
@@ -85,28 +88,31 @@ public class TestCard extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(
-                        m, new DamageInfo(p, DAMAGE, damageTypeForTurn)
-                )
-        );
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAllEnemiesAction(
-                        p,
-                        new int[] {DAMAGE, DAMAGE*2, DAMAGE*3},
-                        damageTypeForTurn,
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
-                )
-        );
+        int s = 0;
+        for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (mo==m){
+                if (s!=0){
+                    AbstractMonster before = AbstractDungeon.getCurrRoom().monsters.monsters.get(s-1);
+                    addToBot(new DamageAction(before, new DamageInfo(p, 5, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                }
+                if (s+1!=AbstractDungeon.getCurrRoom().monsters.monsters.size()){
+                    AbstractMonster after = AbstractDungeon.getCurrRoom().monsters.monsters.get(s+1);
+                    addToBot(new DamageAction(after, new DamageInfo(p, 5, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                }
+            }
+            s++;
+        }
     }
+
 
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
+
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
             initializeDescription();
-        }
+        };
     }
 }

@@ -3,12 +3,6 @@
     "NAME": "Dark Sword",
     "DESCRIPTION": "Deal !D! Damage."
   },
-
-
-
-
-
-
   "darkSouls:DefaultCommonAttack": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! Damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"

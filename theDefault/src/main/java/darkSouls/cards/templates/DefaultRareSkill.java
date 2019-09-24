@@ -62,7 +62,6 @@ public class DefaultRareSkill extends AbstractDynamicCard {
                         new VulnerablePower(mo, magicNumber, false), magicNumber));
             }
         }
-
     }
 
     //Upgraded stats.
