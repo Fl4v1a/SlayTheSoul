@@ -42,7 +42,7 @@ public class BleedPower extends AbstractPower implements CloneablePowerInterface
         this.amount = amount;
         this.source = source;
 
-        type = PowerType.BUFF;
+        type = PowerType.DEBUFF;
         isTurnBased = false;
 
         // We load those textures here.
