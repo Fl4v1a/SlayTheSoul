@@ -24,6 +24,14 @@
       "sugit"
     ],
     "DESCRIPTION": "Milan sugit."
+  },
+  {
+    "PROPER_NAME": "Smash",
+    "NAMES": [
+      "Smash",
+      "smash"
+    ],
+    "DESCRIPTION": "Deal half the Attack effects to adjacent Enemies."
   }
 
 ]

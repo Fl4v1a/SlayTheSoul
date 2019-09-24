@@ -420,6 +420,7 @@ public class DefaultMod implements
         BaseMod.addCard(new TestCard());
         BaseMod.addCard(new DarkSword());
         BaseMod.addCard(new ArtoriasGreatsword());
+        BaseMod.addCard(new FumeGreatsword());
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -441,6 +442,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(TestCard.ID);
         UnlockTracker.unlockCard(DarkSword.ID);
         UnlockTracker.unlockCard(ArtoriasGreatsword.ID);
+        UnlockTracker.unlockCard((FumeGreatsword.ID));
         
         logger.info("Done adding cards!");
     }

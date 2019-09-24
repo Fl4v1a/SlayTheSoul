@@ -1,19 +1,13 @@
 package darkSouls.cards;
 
 import basemod.abstracts.CustomCard;
-import basemod.abstracts.cardbuilder.actionbuilder.EffectActionBuilder;
-import basemod.devcommands.energy.Energy;
 import basemod.helpers.BaseModCardTags;
-import com.evacipated.cardcrawl.mod.stslib.patches.bothInterfaces.OnReceivePowerPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.defect.AggregateEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -32,7 +26,7 @@ import static darkSouls.DefaultMod.makeCardPath;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class ArtoriasGreatsword extends CustomCard {
+public class FumeGreatsword extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -42,7 +36,7 @@ public class ArtoriasGreatsword extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(ArtoriasGreatsword.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(FumeGreatsword.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");
@@ -66,13 +60,11 @@ public class ArtoriasGreatsword extends CustomCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
-    private static final int COST = 3;
-    private static final int DAMAGE = 8;
+    private static final int COST = 1;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private final int MAGIC = 2;
-    private final int UPGRADE_PLUS_MAGIC = 2;
-    private final int MANAGAIN = 1;
-    private final int UPGRADE_PLUS_MANAGAIN = 2;
+    private int MAGIC = 5;
+    private int UPGRADE_PLUS_MAGIC = 5;
 
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
@@ -81,7 +73,7 @@ public class ArtoriasGreatsword extends CustomCard {
 
     // /STAT DECLARATION/
 
-    public ArtoriasGreatsword() {
+    public FumeGreatsword() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
@@ -89,6 +81,7 @@ public class ArtoriasGreatsword extends CustomCard {
 
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
+
         this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
     }
@@ -96,31 +89,42 @@ public class ArtoriasGreatsword extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom( // The action managed queues all the actions a card should do.
-                // addToTop - first
-                // addToBottom - last
-                // 99.99% of the time you just want to addToBottom all of them.
-                // Please do that unless you need to add to top for some specific reason.
+        AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        // a list of existing actions can be found at com.megacrit.cardcrawl.actions but
-                        // Chances are you'd instead look at "hey my card is similar to this basegame card"
-                        // Let's find out what action *it* uses.
-                        // I.e. i want energy gain or card draw, lemme check out Adrenaline
-                        // P.s. if you want to damage ALL enemies OUTSIDE of a card, check out the custom orb.
-                        AbstractGameAction.AttackEffect.SLASH_HEAVY)); // The animation the damage action uses to hit.
+                        AbstractGameAction.AttackEffect.SMASH)); // The animation the damage action uses to hit.
+        /* TODO: Auswahl der Gegner die um das Zielmonster stehen fehlt noch.
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+                addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+        */
+        /* TODO: Auswahl der Gegner die um das Zielmonster stehen fehlt noch.
                 addToBot(new ApplyPowerAction(m, p,
                         new VulnerablePower(m, magicNumber, false), magicNumber));
-                addToBot(new GainEnergyAction(MANAGAIN));
-    }
+        */
+        int s = 0;
+        for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (mo == m) {
 
+                if (s != 0) {
+                    AbstractMonster before = AbstractDungeon.getCurrRoom().monsters.monsters.get(s - 1);
+                    addToBot(new DamageAction(before, new DamageInfo(p, DAMAGE/2, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    addToBot(new ApplyPowerAction(before, p, new VulnerablePower(before, magicNumber/2, false)));
+                }
+                if (s + 1 != AbstractDungeon.getCurrRoom().monsters.monsters.size()) {
+                    AbstractMonster after = AbstractDungeon.getCurrRoom().monsters.monsters.get(s + 1);
+                    addToBot(new DamageAction(after, new DamageInfo(p, DAMAGE/2, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    addToBot(new ApplyPowerAction(after, p, new VulnerablePower(after, magicNumber/2, false)));
+                }
+            }
+            s++;
+        }
+    }
     // Upgraded stats.
     @Override
-    public void upgrade() {
+    public void upgrade(){
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
             upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
-            upgradeMagicNumber(UPGRADE_PLUS_MANAGAIN);
             initializeDescription();
         }
     }
