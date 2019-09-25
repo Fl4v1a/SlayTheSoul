@@ -18,7 +18,7 @@ import static darkSouls.DefaultMod.makeCardPath;
 
 public class ArtoriasSword extends CustomCard {
     // General
-    public static final String ID = DefaultMod.makeID(DarkSword.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(ArtoriasSword.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
