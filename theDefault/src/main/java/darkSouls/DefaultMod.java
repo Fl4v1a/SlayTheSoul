@@ -24,6 +24,7 @@ import darkSouls.cards.templates.*;
 import darkSouls.cards.weapons.ArtoriasSword;
 import darkSouls.cards.weapons.BanditsKnife;
 import darkSouls.cards.weapons.DarkSword;
+import darkSouls.cards.weapons.FumeGreatsword;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import darkSouls.cards.*;
