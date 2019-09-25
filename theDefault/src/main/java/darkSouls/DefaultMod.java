@@ -21,10 +21,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import darkSouls.cards.templates.*;
-import darkSouls.cards.weapons.ArtoriasSword;
-import darkSouls.cards.weapons.BanditsKnife;
-import darkSouls.cards.weapons.DarkSword;
-import darkSouls.cards.weapons.FumeGreatsword;
+import darkSouls.cards.weapons.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import darkSouls.cards.*;
@@ -418,6 +415,7 @@ public class DefaultMod implements
         BaseMod.addCard(new ArtoriasSword());
         BaseMod.addCard(new BanditsKnife());
         BaseMod.addCard(new DarkSword());
+        BaseMod.addCard(new Bloodlust());
 
         
         logger.info("Making sure the cards are unlocked.");
@@ -428,11 +426,11 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
         UnlockTracker.unlockCard(DefaultCommonPower.ID);
 
-        UnlockTracker.unlockCard(TestCard.ID);
         UnlockTracker.unlockCard(FumeGreatsword.ID);
         UnlockTracker.unlockCard(ArtoriasSword.ID);
         UnlockTracker.unlockCard(BanditsKnife.ID);
         UnlockTracker.unlockCard(DarkSword.ID);
+        UnlockTracker.unlockCard(Bloodlust.ID);
 
         logger.info("Done adding cards!");
     }

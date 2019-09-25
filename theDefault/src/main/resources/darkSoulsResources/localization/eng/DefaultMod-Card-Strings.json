@@ -68,7 +68,11 @@
   },
   "darkSouls:FumeGreatsword": {
     "NAME": "Fume Greatsword",
-    "DESCRIPTION": "Smashs for !D! Damage & !M! Vulnerable. NL Scales !B! times with Strength."
+    "DESCRIPTION": "Smashs for !D! Damage & !M! Vulnerable. NL Strength affects !B! times."
+  },
+  "darkSouls:Bloodlust": {
+    "NAME": "Bloodlust",
+    "DESCRIPTION": "Deals !D! Damage. NL Applies !M! Bleed. NL Dexterity affects !B! times."
   }
 
 }

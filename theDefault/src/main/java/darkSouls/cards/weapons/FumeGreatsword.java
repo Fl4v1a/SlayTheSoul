@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import darkSouls.DefaultMod;
 import darkSouls.characters.TheDefault;
@@ -46,6 +47,31 @@ public class FumeGreatsword extends CustomCard {
         block = baseBlock = STRENGTH_SCALE;
 
     }
+
+    public void applyPowers() {
+        AbstractPower strength = AbstractDungeon.player.getPower("Strength");
+        if (strength != null) {
+            strength.amount *= block;
+        }
+        super.applyPowers();
+        if (strength != null) {
+            strength.amount /= block;
+        }
+    }
+
+    public void calculateCardDamage(AbstractMonster monster) {
+        AbstractPower strength = AbstractDungeon.player.getPower("Strength");
+        if (strength != null) {
+            strength.amount *= block;
+        }
+        super.calculateCardDamage(monster);
+        if (strength != null) {
+            strength.amount /= block;
+        }
+    }
+
+
+
     @Override
     public void upgrade() {
         if (!upgraded) {
