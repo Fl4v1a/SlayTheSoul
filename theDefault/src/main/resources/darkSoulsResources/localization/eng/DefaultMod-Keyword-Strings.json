@@ -17,29 +17,46 @@
     ],
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
   },
+
   {
-    "PROPER_NAME": "Sugit",
+    "PROPER_NAME": "Cleave",
     "NAMES": [
-      "Sugit",
-      "sugit"
+      "Cleave",
+      "cleave",
+      "cleaves",
+      "Cleaves"
     ],
-    "DESCRIPTION": "Milan sugit."
+    "DESCRIPTION": "All enemies gets inflicted by the attack effect."
   },
   {
     "PROPER_NAME": "Smash",
     "NAMES": [
       "Smash",
-      "smash"
+      "smash",
+      "Smashs",
+      "smashs"
     ],
-    "DESCRIPTION": "Deal half the Attack effects to adjacent Enemies."
+    "DESCRIPTION": "Adjacent enemies gets inflicted by the half of the attack effect."
   },
   {
     "PROPER_NAME": "Bleed",
     "NAMES": [
       "Bleed",
-      "bleed"
+      "bleed",
+      "Bleeds",
+      "bleeds"
     ],
-    "DESCRIPTION": "Attacks deal X more damage when hurting hp."
+    "DESCRIPTION":"Attacks which would decrease hp deal X more damage."
+  },
+  {
+    "PROPER_NAME": "Frost",
+    "NAMES": [
+      "Frost",
+      "frost",
+      "Frosts",
+      "frosts"
+    ],
+    "DESCRIPTION":"Gets stunned on 10 Frost."
   }
 
 ]

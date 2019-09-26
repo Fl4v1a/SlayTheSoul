@@ -5,6 +5,7 @@ import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.defect.DamageAllButOneEnemyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -25,7 +26,7 @@ import static darkSouls.DefaultMod.makeCardPath;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class DarkSword extends CustomCard {
+public class DarkSoulsCommonAttack extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -35,10 +36,10 @@ public class DarkSword extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DarkSword.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(DarkSoulsCommonAttack.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = makeCardPath("dark_sword-icon.png");
+    public static final String IMG = makeCardPath("Attack.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
     // and make sure it's in the correct folder. That's all.
     // There's makeCardPath, makeRelicPath, power, orb, event, etc..
@@ -55,13 +56,13 @@ public class DarkSword extends CustomCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.BASIC;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int COST = 2;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_PLUS_DMG = 6;
 
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
@@ -70,7 +71,7 @@ public class DarkSword extends CustomCard {
 
     // /STAT DECLARATION/
 
-    public DarkSword() {
+    public DarkSoulsCommonAttack() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
@@ -86,11 +87,12 @@ public class DarkSword extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom( // The action managed queues all the actions a card should do.
+
                 // addToTop - first
                 // addToBottom - last
                 // 99.99% of the time you just want to addToBottom all of them.
                 // Please do that unless you need to add to top for some specific reason.
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
+                new DamageAllEnemiesAction(p, new int[] {DAMAGE}, damageTypeForTurn,
                         // a list of existing actions can be found at com.megacrit.cardcrawl.actions but
                         // Chances are you'd instead look at "hey my card is similar to this basegame card"
                         // Let's find out what action *it* uses.
