@@ -65,7 +65,6 @@ public class Bloodlust extends CustomCard {
             isDamageModified = baseDamage!=realBaseDamage;
             baseDamage = realBaseDamage;
         }
-
     }
 
     public void applyPowers() {
@@ -78,6 +77,7 @@ public class Bloodlust extends CustomCard {
             baseDamage = realBaseDamage;
         }
     }
+
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
