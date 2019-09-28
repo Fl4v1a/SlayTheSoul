@@ -48,25 +48,27 @@ public class FumeGreatsword extends CustomCard {
 
     }
 
+
     public void applyPowers() {
         AbstractPower strength = AbstractDungeon.player.getPower("Strength");
         if (strength != null) {
-            strength.amount *= block;
+            baseDamage += strength.amount*block;
         }
         super.applyPowers();
         if (strength != null) {
-            strength.amount /= block;
+            baseDamage -= strength.amount*block;
         }
     }
 
-    public void calculateCardDamage(AbstractMonster monster) {
+    public void calculateCardDamage(AbstractMonster mo) {
         AbstractPower strength = AbstractDungeon.player.getPower("Strength");
         if (strength != null) {
-            strength.amount *= block;
+            baseDamage += strength.amount*block;
         }
-        super.calculateCardDamage(monster);
+        super.calculateCardDamage(mo);
+
         if (strength != null) {
-            strength.amount /= block;
+            baseDamage -= strength.amount*block;
         }
     }
 

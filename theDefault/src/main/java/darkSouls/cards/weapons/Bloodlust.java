@@ -56,19 +56,28 @@ public class Bloodlust extends CustomCard {
         }
     }
 
+    public void calculateCardDamage(AbstractMonster mo) {
+        AbstractPower dexterity = AbstractDungeon.player.getPower("Dexterity");
+        if (dexterity!=null){
+            int realBaseDamage = baseDamage;
+            baseDamage += block*dexterity.amount;
+            super.calculateCardDamage(mo);
+            isDamageModified = baseDamage!=realBaseDamage;
+            baseDamage = realBaseDamage;
+        }
+
+    }
 
     public void applyPowers() {
-        damage += 5;
-        super.applyPowers();
-        damage -=5;
+        AbstractPower dexterity = AbstractDungeon.player.getPower("Dexterity");
+        if (dexterity!=null){
+            int realBaseDamage = baseDamage;
+            baseDamage += block*dexterity.amount;
+            super.applyPowers();
+            isDamageModified = baseDamage!=realBaseDamage;
+            baseDamage = realBaseDamage;
+        }
     }
-
-    public void calculateCardDamage(AbstractMonster monster) {
-        damage += 5;
-        super.calculateCardDamage(monster);
-        damage -=5;
-    }
-
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
