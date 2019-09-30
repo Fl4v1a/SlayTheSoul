@@ -416,6 +416,7 @@ public class DefaultMod implements
         BaseMod.addCard(new BanditsKnife());
         BaseMod.addCard(new DarkSword());
         BaseMod.addCard(new Bloodlust());
+        BaseMod.addCard(new Falchion());
 
         
         logger.info("Making sure the cards are unlocked.");
@@ -431,6 +432,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(BanditsKnife.ID);
         UnlockTracker.unlockCard(DarkSword.ID);
         UnlockTracker.unlockCard(Bloodlust.ID);
+        UnlockTracker.unlockCard(Falchion.ID);
 
         logger.info("Done adding cards!");
     }

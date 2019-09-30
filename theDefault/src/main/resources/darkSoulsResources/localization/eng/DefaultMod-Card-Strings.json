@@ -73,6 +73,10 @@
   "darkSouls:Bloodlust": {
     "NAME": "Bloodlust",
     "DESCRIPTION": "Deals !D! Damage. NL Applies !M! Bleed. NL Dexterity affects !B! times."
+  },
+  "darkSouls:Falchion": {
+    "NAME": "Falchion",
+    "DESCRIPTION": "Deals !D! Damage. NL Applies !M! Poison. NL Infinitely usable. NL Costs more after using."
   }
 
 }

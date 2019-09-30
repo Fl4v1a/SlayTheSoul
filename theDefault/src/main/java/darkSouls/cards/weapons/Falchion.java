@@ -10,17 +10,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import darkSouls.DefaultMod;
 import darkSouls.characters.TheDefault;
-import darkSouls.powers.BleedPower;
-
 import static darkSouls.DefaultMod.makeCardPath;
 
-public class Bloodlust extends CustomCard {
+public class Falchion extends CustomCard {
     // General
-    public static final String ID = DefaultMod.makeID(Bloodlust.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(Falchion.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -32,18 +29,15 @@ public class Bloodlust extends CustomCard {
     public static final String IMG = makeCardPath("Attack.png");
     // Numbers
     private static final int COST = 1;
-    private static final int DAMAGE = 2;
-    private static final int UPGRADE_DAMAGE = 1;
-    private static final int BLEED = 2;
-    private static final int UPGRADE_BLEED = 1;
-    private static final int DEXTERITY_SCALING = 1;
-    private static final int DEXTERITY_SCALING_UPGRADE = 1;
+    private static final int DAMAGE = 4;
+    private static final int UPGRADE_DAMAGE = 2;
+    private static final int POISON = 4;
+    private static final int UPGRADE_POISON = 2;
 
-    public Bloodlust(){
+    public Falchion(){
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = BLEED;
-        block = baseBlock = DEXTERITY_SCALING;
+        magicNumber = baseMagicNumber = POISON;
     }
 
     @Override
@@ -51,31 +45,7 @@ public class Bloodlust extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
-            upgradeMagicNumber(UPGRADE_BLEED);
-            upgradeBlock(DEXTERITY_SCALING_UPGRADE);
-        }
-    }
-
-    public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower dexterity = AbstractDungeon.player.getPower("Dexterity");
-
-        if (dexterity!=null){
-            int realBaseDamage = baseDamage;
-            baseDamage += block*dexterity.amount;
-            super.calculateCardDamage(mo);
-            isDamageModified = baseDamage!=realBaseDamage;
-            baseDamage = realBaseDamage;
-        }
-    }
-
-    public void applyPowers() {
-        AbstractPower dexterity = AbstractDungeon.player.getPower("Dexterity");
-        if (dexterity!=null){
-            int realBaseDamage = baseDamage;
-            baseDamage += block*dexterity.amount;
-            super.applyPowers();
-            isDamageModified = baseDamage!=realBaseDamage;
-            baseDamage = realBaseDamage;
+            upgradeMagicNumber(UPGRADE_POISON);
         }
     }
 
@@ -83,6 +53,9 @@ public class Bloodlust extends CustomCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(new DamageAction(monster, new DamageInfo(player, damage)));
-        addToBot(new ApplyPowerAction(monster,player,new BleedPower(monster,player,magicNumber)));
+        addToBot(new ApplyPowerAction(monster,player,new PoisonPower(monster,player,magicNumber)));
+        player.discardPile.addToHand(this);
+        player.hand.addToHand(this);
+        AbstractDungeon.player.discardPile.moveToHand(AbstractDungeon.player.discardPile.findCardById(this.ID),AbstractDungeon.player.hand);
     }
 }
