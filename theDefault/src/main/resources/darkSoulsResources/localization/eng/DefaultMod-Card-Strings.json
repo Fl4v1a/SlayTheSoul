@@ -15,6 +15,10 @@
     "NAME": "Falchion",
     "DESCRIPTION": "Deal !D! Damage. NL Apply !M! Poison. NL Card can be replayed for increased Cost."
   },
+  "darkSouls:ExileGreatsword": {
+    "NAME": "Exile Greatsword",
+    "DESCRIPTION": "Deals !D! Cleave Damage. NL Applies !M! Vulnerable to all Enemies."
+  },
 
 
 
@@ -75,5 +79,8 @@
   "darkSouls:TestCard": {
     "NAME": "Test Karte",
     "DESCRIPTION": "Applies !D! darksouls:Bleed."
-  }
+  },
+
+
+
 }
