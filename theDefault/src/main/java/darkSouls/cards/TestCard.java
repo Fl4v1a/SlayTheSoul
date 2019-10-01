@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import darkSouls.DefaultMod;
 import darkSouls.characters.TheDefault;
 import darkSouls.powers.BleedPower;
+import darkSouls.powers.FrostPower;
 
 import static darkSouls.DefaultMod.makeCardPath;
 // "How come this card extends CustomCard and not DynamicCard like all the rest?"
@@ -90,22 +91,7 @@ public class TestCard extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new BleedPower(m, p, DAMAGE), DAMAGE));
-        int s = 0;
-        for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (mo==m){
-                if (s!=0){
-                    AbstractMonster before = AbstractDungeon.getCurrRoom().monsters.monsters.get(s-1);
-                    addToBot(new DamageAction(before, new DamageInfo(p, 5, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                }
-                if (s+1!=AbstractDungeon.getCurrRoom().monsters.monsters.size()){
-                    AbstractMonster after = AbstractDungeon.getCurrRoom().monsters.monsters.get(s+1);
-                    addToBot(new DamageAction(after, new DamageInfo(p, 5, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                }
-            }
-            s++;
-        }
-
+        addToBot(new ApplyPowerAction(m, p, new FrostPower(m,p,5), 5));
     }
 
 

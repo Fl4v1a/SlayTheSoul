@@ -17,5 +17,9 @@
                         "Attacks deal #b",
                         " more damage when hurting hp."
                 ]
+        },
+        "darkSouls:FrostPower": {
+                "NAME": "Frost",
+                "DESCRIPTIONS":["Stunned on 10 Frost."]
         }
 }

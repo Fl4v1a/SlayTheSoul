@@ -1,8 +1,11 @@
 package darkSouls.cards.weapons;
 
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -54,18 +57,11 @@ public class Falchion extends CustomCard {
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(new DamageAction(monster, new DamageInfo(player, damage)));
         addToBot(new ApplyPowerAction(monster,player,new PoisonPower(monster,player,magicNumber)));
-        AbstractDungeon.player.hand.addToHand(new Falchion());
+
     }
-
-
-    public AbstractCard makeCopy(){
-        return new Falchion();
-    }
-
 
     public void onMoveToDiscard() {
-        AbstractDungeon.player.hand.addToHand(this.makeCopy());
-
+        this.cost += 1;
+        AbstractDungeon.actionManager.addToBottom(new DiscardToHandAction(this));
     }
-
 }
