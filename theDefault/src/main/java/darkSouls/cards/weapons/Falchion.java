@@ -54,8 +54,8 @@ public class Falchion extends CustomCard {
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(new DamageAction(monster, new DamageInfo(player, damage)));
         addToBot(new ApplyPowerAction(monster,player,new PoisonPower(monster,player,magicNumber)));
-        player.discardPile.addToHand(this);
-        player.hand.addToHand(this);
-        AbstractDungeon.player.discardPile.moveToHand(AbstractDungeon.player.discardPile.findCardById(this.ID),AbstractDungeon.player.hand);
+        AbstractDungeon.player.hand.addToTop(this);
+        AbstractDungeon.player.hand.refreshHandLayout();
+        AbstractDungeon.player.hand.update();
     }
 }
