@@ -417,7 +417,8 @@ public class DefaultMod implements
         BaseMod.addCard(new DarkSword());
         BaseMod.addCard(new Bloodlust());
         BaseMod.addCard(new Falchion());
-        BaseMod.addCard((new ExileGreatsword()));
+        BaseMod.addCard(new ExileGreatsword());
+        BaseMod.addCard(new DragonslayerAxe());
 
         
         logger.info("Making sure the cards are unlocked.");
@@ -435,6 +436,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(Bloodlust.ID);
         UnlockTracker.unlockCard(Falchion.ID);
         UnlockTracker.unlockCard(ExileGreatsword.ID);
+        UnlockTracker.unlockCard(DragonslayerAxe.ID);
 
         logger.info("Done adding cards!");
     }

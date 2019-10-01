@@ -19,6 +19,10 @@
     "NAME": "Exile Greatsword",
     "DESCRIPTION": "Deals !D! darksouls:Cleave Damage. NL Applies !M! Vulnerable to all Enemies."
   },
+  "darkSouls:DragonslayerAxe": {
+    "NAME": "Dragonslayer Axe",
+    "DESCRIPTION": "Deals !D! Damage to a random Enemy."
+  },
 
 
 

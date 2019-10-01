@@ -3,18 +3,14 @@ package darkSouls.cards.weapons;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.Cleave;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import darkSouls.DefaultMod;
 import darkSouls.characters.TheDefault;
 
@@ -29,7 +25,7 @@ import static darkSouls.DefaultMod.makeCardPath;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class ExileGreatsword extends CustomCard {
+public class DragonslayerAxe extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -39,7 +35,7 @@ public class ExileGreatsword extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(ExileGreatsword.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID(DragonslayerAxe.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");
@@ -63,48 +59,31 @@ public class ExileGreatsword extends CustomCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
-    private static final int COST = 3;
+    private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC = 3;
-    private static final int UPGRADE_PLUS_MAGIC = 1;
-    // Hey want a second damage/magic/block/unique number??? Great!
-    // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
-    // that's how you get your own custom variable that you can use for anything you like.
-    // Feel free to explore other mods to see what variabls they personally have and create your own ones.
 
-    // /STAT DECLARATION/
-
-    public ExileGreatsword() {
+    public DragonslayerAxe() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-
-        // Aside from baseDamage/MagicNumber/Block there's also a few more.
-        // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
-        magicNumber = baseMagicNumber = MAGIC;
         baseDamage = DAMAGE;
-
         this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
-        this.exhaust = true;
-        this.isMultiDamage = true;
-        this.baseDamage = DAMAGE;
     }
-
-
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
+            initializeDescription();
         }
     }
-
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, new int[] {damage}, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ApplyPowerAction(m,p, new VulnerablePower(m, magicNumber, false)));
+        AbstractDungeon.actionManager.addToBottom(
+                new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn),
+                       AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
+
+
 }
